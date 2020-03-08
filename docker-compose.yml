@@ -1,0 +1,10 @@
+version: '3.5'
+services:
+  rabobank-assignment:
+    image: rabobank/rabobank-assignment:latest
+    build: ./
+    restart: always
+    ports:
+      - "8081:8081"
+    networks:
+      - default

@@ -1,0 +1,26 @@
+<config
+  xmlns='http://www.ehcache.org/v3'
+  xmlns:jsr107='http://www.ehcache.org/v3/jsr107'>
+
+  <service>
+    <jsr107:defaults enable-management="true" enable-statistics="true"/>
+  </service>
+
+  <cache alias="accountDetails" uses-template="short-term-cache"/>
+  <cache alias="debitCardDetails" uses-template="short-term-cache"/>
+  <cache alias="creditCardDetails" uses-template="short-term-cache"/>
+
+  <!--
+    small short-lived cache intended for location-related calls
+  -->
+  <cache-template name="short-term-cache">
+    <expiry>
+      <tti unit="minutes">5</tti>
+    </expiry>
+    <resources>
+      <heap>100</heap>
+    </resources>
+  </cache-template>
+
+</config>
+
